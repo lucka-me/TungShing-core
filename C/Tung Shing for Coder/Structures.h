@@ -5,7 +5,7 @@
 //  C version
 //
 //  Created by Lucka.
-//  Based on by@fake_faith's work on http://sandbox.runjs.cn/show/ydp3it7b
+//  Based on @fake_faith's work on http://sandbox.runjs.cn/show/ydp3it7b
 //
 
 #ifndef Structures_h
