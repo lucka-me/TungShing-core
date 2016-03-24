@@ -165,10 +165,10 @@ for i:Int in 0 ..< Activities.count {
         let nameStringIndex = Range<String.Index>(start: Activities[i].name.startIndex, end: Activities[i].name.endIndex)
         Activities[i].name.replaceRange(Activities[i].name.rangeOfString("%t")!, with: Tools[getRandom(FullDate, indexSeed: 11) % Tools.count])
     } else if (Activities[i].name.rangeOfString("%v") != nil) {
-        let nameStringIndex = Range<String.Index>(start: Activities[i].name.startIndex, end: Activities[i].name.endIndex)
+        let nameStringIndex = Range<String.Index>(Activities[i].name.startIndex..<Activities[i].name.endIndex)
         Activities[i].name.replaceRange(Activities[i].name.rangeOfString("%v")!, with: varNames[getRandom(FullDate, indexSeed: 12) % varNames.count])
     } else if (Activities[i].name.rangeOfString("%l") != nil) {
-        let nameStringIndex = Range<String.Index>(start: Activities[i].name.startIndex, end: Activities[i].name.endIndex)
+        let nameStringIndex = Range<String.Index>(Activities[i].name.startIndex..<Activities[i].name.endIndex)
         Activities[i].name.replaceRange(Activities[i].name.rangeOfString("%l")!, with:  String(getRandom(FullDate, indexSeed: 12) % 247 + 30))
     }
 }
