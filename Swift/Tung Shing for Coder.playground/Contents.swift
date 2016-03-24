@@ -162,7 +162,7 @@ var varNames = ["jieguo", "huodong", "pay", "expire", "zhangdan", "every", "free
 // 查找并替换字符串
 for i:Int in 0 ..< Activities.count {
     if (Activities[i].name.rangeOfString("%t") != nil) {
-        let nameStringIndex = Range<String.Index>(start: Activities[i].name.startIndex, end: Activities[i].name.endIndex)
+        let nameStringIndex = Range<String.Index>(Activities[i].name.startIndex..<Activities[i].name.endIndex)
         Activities[i].name.replaceRange(Activities[i].name.rangeOfString("%t")!, with: Tools[getRandom(FullDate, indexSeed: 11) % Tools.count])
     } else if (Activities[i].name.rangeOfString("%v") != nil) {
         let nameStringIndex = Range<String.Index>(Activities[i].name.startIndex..<Activities[i].name.endIndex)
