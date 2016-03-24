@@ -36,7 +36,7 @@ let FullDate:Int = Int(dateFormatter.stringFromDate(Date))! // 获得整数形�
 
 /* 打印分隔符 */
 func DivLine(Symbol:Character, num:Int)->Void {
-    for var i:Int = 0; i<num; i++ {
+    for _:Int in 0 ..< num {
         print(Symbol,terminator: "")    // terminator 在字符串末尾加上指定后缀，默认是 \n，在这里不希望换行
     }
 }
@@ -58,7 +58,7 @@ func isWeekends ()->Bool {
 /* 用当天日期获得一个随机数 */
 func getRandom(FullDate:Int, indexSeed:Int)->Int {
     var n = FullDate % 11117;
-    for (var i:Int = 0; i < 100 + indexSeed; i++) {
+    for _ in 0 ..< 100 + indexSeed {
         n = n * n;
         n = n % 11117;   // 11117 是个质数
     }
@@ -66,13 +66,15 @@ func getRandom(FullDate:Int, indexSeed:Int)->Int {
 }
 
 /* 从数组中选择 num 个元素*/
-/* 需要学习 */
-func pickRandom (var SourceArray:[Any], num:Int, FullDate:Int) {
+/* 暂时弃用，需要学习… */
+func pickRandom (SourceArray:[Any], num:Int, FullDate:Int)->[Any] {
     let Count = SourceArray.count
-    for (var i:Int = 0; i < Count - 2; i++) {
-        let index = getRandom(FullDate, indexSeed: i) % SourceArray.count
-        SourceArray.removeAtIndex(index)
+    var Result = SourceArray
+    for i:Int in 0 ..< Count - 2 {
+        let index = getRandom(FullDate, indexSeed: i) % Result.count
+        Result.removeAtIndex(index)
     }
+    return Result
 }
 
 /* 返回星形指数 */
@@ -81,18 +83,18 @@ func getStars(num:Int)->String {
     var Stars:String = ""
     while (n < num) {
         Stars += "★";
-        n++;
+        n += 1;
     }
     while(n < 5) {
         Stars += "☆";
-        n++;
+        n += 1;
     }
     return Stars
 }
 
 /* 输出特殊事件 */
 func printSpecialActs (SpecialActs:[SpcAct], isGood:Bool, FullDate:Int) {
-    for (var i:Int = 0; i < SpecialActs.count; i++) {
+    for i:Int in 0 ..< SpecialActs.count {
         if (SpecialActs[i].date == FullDate && SpecialActs[i].isGood == isGood) {
             print(SpecialActs[i].name)
             print("\t" + SpecialActs[i].description)
@@ -135,10 +137,10 @@ var Activities = [
 
 // 筛去不合当日条件的事件
 if (isWeekends()) {
-    for (var i:Int = 0; i < Activities.count; i++) {
+    for var i:Int in 0 ..< Activities.count {
         if (Activities[i].isWeekends != true) {
             Activities.removeAtIndex(i)
-            i--
+            i -= 1
         }
     }
 }
@@ -147,7 +149,7 @@ if (isWeekends()) {
 var numGood = getRandom(FullDate, indexSeed: 98) % 3 + 2
 var numBad = getRandom(FullDate, indexSeed: 87) % 3 + 2
 let CountofActs = Activities.count
-for (var i:Int = 0; i < CountofActs - (numBad + numGood); i++) {
+for i:Int in 0 ..< CountofActs - (numBad + numGood) {
     var index = getRandom(FullDate, indexSeed: i) % Activities.count
     Activities.removeAtIndex(index)
 }
@@ -158,7 +160,7 @@ var Tools = ["Eclipse写程序", "MSOffice写文档", "记事本写程序", "Win
 var varNames = ["jieguo", "huodong", "pay", "expire", "zhangdan", "every", "free", "i1", "a", "virtual", "ad", "spider", "mima", "pass", "ui"];
 
 // 查找并替换字符串
-for (var i:Int = 0; i < Activities.count; i++) {
+for i:Int in 0 ..< Activities.count {
     if (Activities[i].name.rangeOfString("%t") != nil) {
         let nameStringIndex = Range<String.Index>(start: Activities[i].name.startIndex, end: Activities[i].name.endIndex)
         Activities[i].name.replaceRange(Activities[i].name.rangeOfString("%t")!, with: Tools[getRandom(FullDate, indexSeed: 11) % Tools.count])
@@ -184,7 +186,7 @@ var Derections = ["北方", "东北方", "东方", "东南方", "南方", "西�
 // 饮料表及处理
 var Drinks = ["水", "茶", "红茶", "绿茶", "咖啡", "奶茶", "可乐", "鲜奶", "豆奶", "果汁", "果味汽水", "苏打水", "运动饮料", "酸奶", "酒"];
 let CountofDrink = Drinks.count
-for (var i:Int = 0; i < CountofDrink - 2; i++) {
+for i:Int in 0 ..< CountofDrink - 2 {
     var index = getRandom(FullDate, indexSeed: i) % Drinks.count
     Drinks.removeAtIndex(index)
 }
@@ -209,7 +211,7 @@ print("")
 
 print("宜")
 printSpecialActs(SpecialActs, isGood: true, FullDate: FullDate)
-for (var i:Int = 0; i < numGood; i++) {
+for i:Int in 0 ..< numGood {
     print(Activities[i].name)
     if (Activities[i].good != "") {
         print("\t" + Activities[i].good)
@@ -221,7 +223,7 @@ print("")
 
 print("不宜")
 printSpecialActs(SpecialActs, isGood: false, FullDate: FullDate)
-for (var i:Int = 0; i < numBad; i++) {
+for i:Int in 0 ..< numBad {
     print(Activities[numGood + i].name)
     if (Activities[numGood + i].bad != "") {
         print("\t" + Activities[numGood + i].bad)
