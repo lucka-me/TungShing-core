@@ -45,7 +45,7 @@ Swift 感觉比 C 语言更“自由”，功能也更丰富，这使得我能�
 ## Requirement
 ### C
 * 完全的 C99 标准支持
-    * 推荐使用 [Dev-C++](https://sourceforge.net/projects/orwelldevcpp/) 或 [Microsoft Visual Studio Community 2015](https://www.visualstudio.com/zh-cn/dn469161)
+    * 推荐使用 [Dev-C++](https://sourceforge.net/projects/orwelldevcpp/)，[Code::Blocks](http://www.codeblocks.org) 或 [Microsoft Visual Studio Community 2015](https://www.visualstudio.com/zh-cn/dn469161)
     * 不支持 Microsoft Visual C++ 2012 之前的版本，包括 6.0
 * 可自行修改代码使其符合 C89 / ANSI C 标准要求
 
