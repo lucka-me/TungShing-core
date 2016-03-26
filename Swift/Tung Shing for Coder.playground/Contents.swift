@@ -137,12 +137,15 @@ var Activities = [
 
 // 筛去不合当日条件的事件
 if (isWeekends()) {
-    for var i:Int in 0 ..< Activities.count {
-        if (Activities[i].isWeekends != true) {
-            Activities.removeAtIndex(i)
-            i -= 1
+    var countofActs = Activities.count
+    var index = 0
+    repeat {
+        if (Activities[index].isWeekends != true) {
+            Activities.removeAtIndex(index)
+            index -= 1
         }
-    }
+        index += 1
+    } while (index < Activities.count)
 }
 
 // 生成宜忌事件目录
