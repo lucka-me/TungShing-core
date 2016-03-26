@@ -29,6 +29,7 @@ int main(int argc, const char * argv[]) {
     int Day = pTIME->tm_mday;
     int Week = pTIME->tm_wday;  // 星期天是0
     int FullDate = Year * 10000 + Month * 100 + Day;
+    FullDate = 20160406;
     
     /* 今天是 */
     char *WeekName[] = {"天", "一", "二", "三", "四", "五", "六"};
@@ -101,7 +102,7 @@ int main(int argc, const char * argv[]) {
     int numGood = getRandom(FullDate, 98) % 3 + 2;
     int numBad = getRandom(FullDate, 87) % 3 + 2;
     Act PickedActs[numGood + numBad];
-    PickActs(Activities, countActivities,PickedActs, numGood + numGood, FullDate);
+    PickActs(Activities, countActivities,PickedActs, numGood + numBad, FullDate);
     
     printf("宜\n");
     PrintSpcActs(Specials, sizeof(Specials)/sizeof(Specials[0]), 1, FullDate);
