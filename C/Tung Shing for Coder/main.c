@@ -101,7 +101,7 @@ int main(int argc, const char * argv[]) {
     int numGood = getRandom(FullDate, 98) % 3 + 2;
     int numBad = getRandom(FullDate, 87) % 3 + 2;
     Act PickedActs[numGood + numBad];
-    PickActs(Activities, countActivities,PickedActs, numGood + numGood, FullDate);
+    PickActs(Activities, countActivities,PickedActs, numGood + numBad, FullDate);
     
     printf("宜\n");
     PrintSpcActs(Specials, sizeof(Specials)/sizeof(Specials[0]), 1, FullDate);
