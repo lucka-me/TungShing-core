@@ -28,6 +28,7 @@ int countWeekends (Act Activities[], int SizeofActivities);
 void getStars (int num);
 void PickActs (Act Activities[], int SizeofActivities, Act PickedActs[], int size, int FullData);
 void FilterWeekends (Act AllActivities[], int SizeofAllActivities, Act Activities[], int SizeofActivities);
+void PrintFullName (int Index, int FullDate);
 void PrintSpcActs (SpcAct Specials[], int SizeofSpecials , int isGood, int FullDate);
 
 #endif /* Functions_h */

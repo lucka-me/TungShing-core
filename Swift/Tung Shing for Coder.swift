@@ -157,7 +157,6 @@ for i:Int in 0 ..< CountofActs - (numBad + numGood) {
     Activities.removeAtIndex(index)
 }
 
-Activities
 // 待替换内容
 var Tools = ["Eclipse写程序", "MSOffice写文档", "记事本写程序", "Windows8", "Linux", "MacOS", "IE", "Android设备", "iOS设备"];
 var varNames = ["jieguo", "huodong", "pay", "expire", "zhangdan", "every", "free", "i1", "a", "virtual", "ad", "spider", "mima", "pass", "ui"];
@@ -194,7 +193,6 @@ for i:Int in 0 ..< CountofDrink - 2 {
     Drinks.removeAtIndex(index)
 }
 
-Drinks
 /* ********** 代码区域 ********** */
 /* 头部 */
 let WIDTH = 50

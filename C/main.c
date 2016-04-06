@@ -46,7 +46,6 @@ int main(int argc, const char * argv[]) {
     putchar('\n');
     
     // 初始事件总表
-    // 部分事件中含有目前无法处理的内容（替换字符串），故得到的结果将与原版不同
     Act AllActivities[] = {
         {.name = "写单元测试", .good = "写单元测试将减少出错", .bad = "写单元测试会降低你的开发效率", .isWeekends = 0},
         {.name = "洗澡", .good = "你几天没洗澡了？", .bad = "会把设计方面的灵感洗掉", .isWeekends = 1},
@@ -54,7 +53,7 @@ int main(int argc, const char * argv[]) {
         {.name = "抽烟", .good = "抽烟有利于提神，增加思维敏捷", .bad = "除非你活够了，死得早点没关系", .isWeekends = 1},
         {.name = "白天上线", .good = "今天白天上线是安全的", .bad = "可能导致灾难性后果", .isWeekends = 0},
         {.name = "重构", .good = "代码质量得到提高", .bad = "你很有可能会陷入泥潭", .isWeekends = 0},
-        // {.name = "使用%t", .good = "你看起来更有品位", .bad = "别人会觉得你在装逼", .isWeekends = 0},
+        {.name = "使用%t", .good = "你看起来更有品位", .bad = "别人会觉得你在装逼", .isWeekends = 0},
         {.name = "跳槽", .good = "该放手时就放手", .bad = "鉴于当前的经济形势，你的下一份工作未必比现在强", .isWeekends = 0},
         {.name = "招人", .good = "你面前这位有成为牛人的潜质", .bad = "这人会写程序吗？", .isWeekends = 0},
         {.name = "面试", .good = "面试官今天心情很好", .bad = "面试官不爽，会拿你出气", .isWeekends = 0},
@@ -64,8 +63,8 @@ int main(int argc, const char * argv[]) {
         {.name = "在妹子面前吹牛", .good = "改善你矮穷挫的形象", .bad = "会被识破", .isWeekends = 1},
         {.name = "撸管", .good = "避免缓冲区溢出", .bad = "强撸灰飞烟灭", .isWeekends = 1},
         {.name = "浏览成人网站", .good = "重拾对生活的信心", .bad = "你会心神不宁", .isWeekends = 1},
-        // {.name = "命名变量\"%v\"", .good = "", .bad = "", .isWeekends = 0},
-        // {.name = "写超过%l行的方法", .good = "你的代码组织的很好，长一点没关系", .bad = "你的代码将混乱不堪，你自己都看不懂", .isWeekends = 0},
+        {.name = "命名变量\"%v\"", .good = "", .bad = "", .isWeekends = 0},
+        {.name = "写超过%l行的方法", .good = "你的代码组织的很好，长一点没关系", .bad = "你的代码将混乱不堪，你自己都看不懂", .isWeekends = 0},
         {.name = "提交代码", .good = "遇到冲突的几率是最低的", .bad = "你遇到的一大堆冲突会让你觉得自己是不是时间穿越了", .isWeekends = 0},
         {.name = "代码复审", .good = "发现重要问题的几率大大增加", .bad = "你什么问题都发现不了，白白浪费时间", .isWeekends = 0},
         {.name = "开会", .good = "写代码之余放松一下打个盹，有益健康", .bad = "小心被扣屎盆子背黑锅", .isWeekends = 0},
@@ -106,7 +105,15 @@ int main(int argc, const char * argv[]) {
     printf("宜\n");
     PrintSpcActs(Specials, sizeof(Specials)/sizeof(Specials[0]), 1, FullDate);
     for (int i = 0; i < numGood; i++) {
-        printf("%s\n", PickedActs[i].name);
+        if (strcmp(PickedActs[i].name, "使用%t") == 0) {
+            PrintFullName(1, FullDate);
+        } else if (strcmp(PickedActs[i].name, "命名变量\"%v\"") == 0){
+            PrintFullName(2, FullDate);
+        } else if (strcmp(PickedActs[i].name, "写超过%l行的方法") == 0) {
+            PrintFullName(3, FullDate);
+        } else {
+            printf("%s\n", PickedActs[i].name);
+        }
         if (strcmp(PickedActs[i].good, "") != 0) {  // 没有描述时就不打印了
             printf("\t%s\n", PickedActs[i].good);
         }
@@ -117,7 +124,15 @@ int main(int argc, const char * argv[]) {
     printf("不宜\n");
     PrintSpcActs(Specials, sizeof(Specials)/sizeof(Specials[0]), 0, FullDate);
     for (int i = 0; i < numBad; i++) {
-        printf("%s\n", PickedActs[i+numGood].name);
+        if (strcmp(PickedActs[i+numGood].name, "使用%t") == 0) {
+            PrintFullName(1, FullDate);
+        } else if (strcmp(PickedActs[i+numGood].name, "命名变量\"%v\"") == 0){
+            PrintFullName(2, FullDate);
+        } else if (strcmp(PickedActs[i+numGood].name, "写超过%l行的方法") == 0) {
+            PrintFullName(3, FullDate);
+        } else {
+            printf("%s\n", PickedActs[i+numGood].name);
+        }
         if (strcmp(PickedActs[i+numGood].bad, "") != 0) {
             printf("\t%s\n", PickedActs[i+numGood].bad);
         }

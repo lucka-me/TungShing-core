@@ -1,3 +1,2 @@
-# Tung Shing for Coder - Swift Playground
-如果想用 Playground 直接运行，请下载 `Tung Shing for Coder.playground`  
-如果想查看源代码，请打开 `Tung Shing for Coder.playground` 中的 `Contents.swift`
+# Tung Shing for Coder - Swift
+不再提供 .playground 文件，请自行建立 Playground 文件或 Swift 工程。

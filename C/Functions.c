@@ -135,6 +135,25 @@ void FilterWeekends (Act AllActivities[], int SizeofAllActivities, Act Activitie
         }
     }
 }
+/* 输出特殊名称 */
+void PrintFullName (int Index, int FullDate) {
+    char *Tools[] = {"Eclipse写程序", "MSOffice写文档", "记事本写程序", "Windows8", "Linux", "MacOS", "IE", "Android设备", "iOS设备"};
+    char *varNames[] = {"jieguo", "huodong", "pay", "expire", "zhangdan", "every", "free", "i1", "a", "virtual", "ad", "spider", "mima", "pass", "ui"};
+    
+    switch (Index) {
+        case 1:
+            printf("使用%s\n", Tools[getRandom(FullDate, 11) % (sizeof(Tools) / sizeof(Tools[0]))]);
+            break;
+        case 2:
+            printf("命名变量\"%s\"\n", varNames[getRandom(FullDate, 12) % (sizeof(varNames) / sizeof(varNames[0]))]);
+            break;
+        case 3:
+            printf("写超过%d行的方法\n", getRandom(FullDate, 12) % 247 + 30);
+            break;
+        default:
+            break;
+    }
+}
 
 /* 输出特殊事件 */
 void PrintSpcActs (SpcAct Specials[], int SizeofSpecials , int isGood, int FullDate) {
