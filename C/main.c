@@ -105,16 +105,16 @@ int main(int argc, const char * argv[]) {
     printf("宜\n");
     PrintSpcActs(Specials, sizeof(Specials)/sizeof(Specials[0]), 1, FullDate);
     for (int i = 0; i < numGood; i++) {
-        if (strcmp(PickedActs[i].name, "使用%t") == 0) {
+        if (!strcmp(PickedActs[i].name, "使用%t")) {
             PrintFullName(1, FullDate);
-        } else if (strcmp(PickedActs[i].name, "命名变量\"%v\"") == 0){
+        } else if (!strcmp(PickedActs[i].name, "命名变量\"%v\"")){
             PrintFullName(2, FullDate);
-        } else if (strcmp(PickedActs[i].name, "写超过%l行的方法") == 0) {
+        } else if (!strcmp(PickedActs[i].name, "写超过%l行的方法")) {
             PrintFullName(3, FullDate);
         } else {
             printf("%s\n", PickedActs[i].name);
         }
-        if (strcmp(PickedActs[i].good, "") != 0) {  // 没有描述时就不打印了
+        if (strcmp(PickedActs[i].good, "")) {  // 没有描述时就不打印了
             printf("\t%s\n", PickedActs[i].good);
         }
     }
@@ -124,16 +124,16 @@ int main(int argc, const char * argv[]) {
     printf("不宜\n");
     PrintSpcActs(Specials, sizeof(Specials)/sizeof(Specials[0]), 0, FullDate);
     for (int i = 0; i < numBad; i++) {
-        if (strcmp(PickedActs[i+numGood].name, "使用%t") == 0) {
+        if (!strcmp(PickedActs[i+numGood].name, "使用%t")) {
             PrintFullName(1, FullDate);
-        } else if (strcmp(PickedActs[i+numGood].name, "命名变量\"%v\"") == 0){
+        } else if (!strcmp(PickedActs[i+numGood].name, "命名变量\"%v\"")){
             PrintFullName(2, FullDate);
-        } else if (strcmp(PickedActs[i+numGood].name, "写超过%l行的方法") == 0) {
+        } else if (!strcmp(PickedActs[i+numGood].name, "写超过%l行的方法")) {
             PrintFullName(3, FullDate);
         } else {
             printf("%s\n", PickedActs[i+numGood].name);
         }
-        if (strcmp(PickedActs[i+numGood].bad, "") != 0) {
+        if (strcmp(PickedActs[i+numGood].bad, "")) {
             printf("\t%s\n", PickedActs[i+numGood].bad);
         }
     }

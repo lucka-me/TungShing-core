@@ -135,6 +135,7 @@ void FilterWeekends (Act AllActivities[], int SizeofAllActivities, Act Activitie
         }
     }
 }
+
 /* 输出特殊名称 */
 void PrintFullName (int Index, int FullDate) {
     char *Tools[] = {"Eclipse写程序", "MSOffice写文档", "记事本写程序", "Windows8", "Linux", "MacOS", "IE", "Android设备", "iOS设备"};
